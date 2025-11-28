@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D3E3CD"
+    tools:context=".Vista.Inventario">
+
+    <TextView
+        android:id="@+id/txtInventario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/txtInventario"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/edtNumInventario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.397" />
+
+    <EditText
+        android:id="@+id/edtNumInventario"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
+        android:background="#D6D6D6"
+        android:ems="10"
+        android:hint="@string/edtNumInventario"
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/edtNumSerie"
+        app:layout_constraintEnd_toEndOf="@+id/txtInventario"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="@+id/txtInventario" />
+
+    <EditText
+        android:id="@+id/edtNumSerie"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
+        android:background="#D6D6D6"
+        android:ems="10"
+        android:hint="@string/edtNumSerie"
+        android:inputType="text"
+
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/spnCategoria"
+        app:layout_constraintEnd_toEndOf="@+id/edtNumInventario"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edtNumInventario" />
+
+    <Spinner
+        android:id="@+id/spnCategoria"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
+        android:background="#D6D6D6"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/spnMarca"
+        app:layout_constraintEnd_toEndOf="@+id/edtNumSerie"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edtNumSerie" />
+
+    <Spinner
+        android:id="@+id/spnMarca"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
+        android:background="#D6D6D6"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/spnColor"
+        app:layout_constraintEnd_toEndOf="@+id/spnCategoria"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/spnCategoria" />
+
+    <Spinner
+        android:id="@+id/spnColor"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="76dp"
+        android:background="#D6D6D6"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/btnAgregarI"
+        app:layout_constraintEnd_toEndOf="@+id/spnMarca"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/spnMarca" />
+
+    <Button
+        android:id="@+id/btnAgregarI"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="128dp"
+        android:backgroundTint="#27AE60"
+        android:text="@string/btnAgregarI"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/spnColor"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/spnColor" />
+</androidx.constraintlayout.widget.ConstraintLayout>

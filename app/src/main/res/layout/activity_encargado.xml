@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="#D3E3CD"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Vista.Encargado">
+
+    <View
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:background="#27AE60"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+
+    <TextView
+        android:id="@+id/txtEncargado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="181dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="172dp"
+        android:drawableLeft="@drawable/user"
+        android:text="Agregar usuario"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutNombreE"
+        android:layout_width="286dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="65dp"
+        app:layout_constraintEnd_toEndOf="@+id/txtEncargado"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txtEncargado"
+        app:layout_constraintTop_toBottomOf="@+id/txtEncargado">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtNombreE"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="Ingrese su nombre"
+            android:textColor="@color/black" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutCorreoE"
+        android:layout_width="286dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="18dp"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayoutNombreE"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayoutNombreE"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNombreE">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtCorreoE"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="Ingrese su correo"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutPass1"
+        android:layout_width="286dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="18dp"
+        app:endIconMode="password_toggle"
+        app:endIconTint="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayoutCorreoE"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayoutCorreoE"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCorreoE">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtPass1"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="Ingrese su contraseña"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutPass2"
+        android:layout_width="286dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="18dp"
+        app:endIconMode="password_toggle"
+        app:endIconTint="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayoutPass1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayoutPass1"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPass1">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtPass2"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="Confirme su contraseña"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutCodigoV"
+        android:layout_width="286dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="18dp"
+
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayoutPass2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayoutPass2"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPass2">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtCodigoV"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="Ingrese su codigo de verificacion"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnAgregarE"
+        android:layout_width="286dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="90dp"
+        android:backgroundTint="#1E5631"
+        android:text="@string/btnAgregarE"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/spnrol"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/spnrol"
+        app:layout_constraintTop_toBottomOf="@+id/spnrol"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Spinner
+        android:id="@+id/spnrol"
+        android:layout_width="286dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="20dp"
+        android:background="#D6D6D6"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayoutCodigoV"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayoutCodigoV"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCodigoV" />
+</androidx.constraintlayout.widget.ConstraintLayout>

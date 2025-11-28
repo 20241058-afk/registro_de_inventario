@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="#D3E3CD"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Vista.Categoria">
+
+    <View
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:background="#27AE60"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/txtCategoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="178dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="175dp"
+        android:text="  Categoria"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        android:textStyle="bold|italic"
+        android:drawableLeft="@drawable/category"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutcategoria"
+        android:layout_width="276dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="172dp"
+        app:layout_constraintEnd_toEndOf="@+id/txtCategoria"
+        app:layout_constraintStart_toStartOf="@+id/txtCategoria"
+        app:layout_constraintTop_toBottomOf="@+id/txtCategoria">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtcategoria"
+            android:layout_width="match_parent"
+            android:layout_height="59dp"
+            android:hint="Ingrese la categoria"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnACategoria"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#1E5631"
+        android:text="@string/btnCategoria"
+        android:textColor="@color/white"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayoutcategoria"
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayoutcategoria"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutcategoria"
+        app:layout_constraintVertical_bias="0.318" />
+</androidx.constraintlayout.widget.ConstraintLayout>

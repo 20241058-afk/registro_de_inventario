@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">LoanWarea </string>
+    <string name="btnLogin">Iniciar sesión</string>
+    <string name="edtUsuario">Usuario</string>
+    <string name="edtPass">Contraseña</string>
+    <string name="btnIniciar">Iniciar sesión</string>
+    <string name="txtRegistro">Registrarse</string>
+    <string name="edtNUsuario">Nombre de usuario</string>
+    <string name="edtCorreo">Correo</string>
+    <string name="edtPass1">Contraseña</string>
+    <string name="edtPass2">Confirmar contraseña</string>
+    <string name="btnRegistro">Registrarse</string>
+    <string name="btnInventario">Agregar inventario</string>
+    <string name="btnMarca">Agregar marca</string>
+    <string name="btnCategoria">Agregar categoría</string>
+    <string name="btnEncargado">Agregar encargado</string>
+    <string name="txtInventario">Inventario</string>
+    <string name="edtNumInventario">Número de inventario</string>
+    <string name="edtNumSerie">Número de serie</string>
+    <string name="spnCategoria">Categoría</string>
+    <string name="spnMarca">Marca</string>
+    <string name="spnColor">Color">Menú administrador</string>
+    <string name="btnAgregarI">Agregar inventario</string>
+    <string name="txtMarca">Marca</string>
+    <string name="edtMarca">Ingrese la marca</string>
+    <string name="btnAgregarMarca">Agregar marca</string>
+    <string name="txtCategoria">Categoría</string>
+    <string name="edtCategoria">Ingrese la categoría</string>
+    <string name="btnAgregarCategoria">Agregar categoría</string>
+    <string name="txtMenuA">Menú administrador</string>
+    <string name="txtEncargado">Encargado</string>
+    <string name="edtNombreE">Ingrese el nombre</string>
+    <string name="edtCorreoE">Ingrese el correo</string>
+    <string name="edtPassE">Ingrese la contraseña</string>
+    <string name="edtCPassE">Confirme la contraseña</string>
+    <string name="spnRol">Seleccione el rol</string>
+    <string name="btnAgregarE">Agregar encargado</string>
+    <string name="txtMenuU">Menú usuario</string>
+    <string name="btnHistorial">Historial de préstamos</string>
+    <string name="btnPass">Cambiar contraseña</string>
+    <string name="txttitulo">SISTEMA DE PRÉSTAMO DE EQUIPO Y ACCESORIOS DE CÓMPUTO</string>
+
+
+</resources>

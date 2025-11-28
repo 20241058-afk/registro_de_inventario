@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D3E3CD"
+    tools:context=".Vista.administrador">
+
+    <View
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:background="#27AE60"
+        app:layout_constraintBottom_toTopOf="@+id/btnInventario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/txtMenuA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="76dp"
+        android:text="administrador"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/btnInventario"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/btnInventario"
+        android:layout_width="250dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="28dp"
+        android:backgroundTint="#D6D6D6"
+        android:drawableLeft="@drawable/inevtory"
+        android:text="@string/btnInventario"
+        android:textColor="@color/black"
+        android:textColorHighlight="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnMarca"
+        app:layout_constraintEnd_toEndOf="@+id/txtMenuA"
+        app:layout_constraintStart_toStartOf="@+id/txtMenuA" />
+
+    <Button
+        android:id="@+id/btnEncargado"
+        android:layout_width="250dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="176dp"
+        android:backgroundTint="#D6D6D6"
+        android:drawableLeft="@drawable/user"
+        android:text="@string/btnEncargado"
+        android:textColor="@color/black"
+        android:textColorHighlight="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btnCategoria"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btnCategoria" />
+
+    <Button
+        android:id="@+id/btnCategoria"
+        android:layout_width="250dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="29dp"
+        android:backgroundTint="#D6D6D6"
+        android:drawableLeft="@drawable/category"
+        android:text="@string/btnCategoria"
+        android:textColor="@color/black"
+        android:textColorHighlight="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnEncargado"
+        app:layout_constraintEnd_toEndOf="@+id/btnMarca"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btnMarca" />
+
+    <Button
+        android:id="@+id/btnMarca"
+        android:layout_width="250dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="28dp"
+        android:backgroundTint="#D6D6D6"
+        android:drawableLeft="@drawable/mark"
+        android:text="@string/btnMarca"
+        android:textColor="@color/black"
+        android:textColorHighlight="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnCategoria"
+        app:layout_constraintEnd_toEndOf="@+id/btnInventario"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btnInventario" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Menú"
+        android:textSize="34sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/txtMenuA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
