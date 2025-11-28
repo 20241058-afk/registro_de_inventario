@@ -9,6 +9,15 @@
     tools:context=".Vista.Login">
 
 
+    <View
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:background="#27AE60"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
     <Button
         android:id="@+id/btnIniciar"
@@ -29,26 +38,26 @@
         android:id="@+id/txttitulo"
         android:layout_width="327dp"
         android:layout_height="86dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="16dp"
         android:text="@string/txttitulo"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="24sp"
-        android:textStyle="italic"
+        android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="253dp"
         android:layout_height="152dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txttitulo"
         app:srcCompat="@drawable/logo" />
-
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"

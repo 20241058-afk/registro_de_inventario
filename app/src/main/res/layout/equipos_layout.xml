@@ -3,61 +3,58 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
-
+    android:layout_height="wrap_content"  android:background="#DDE8D4">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="409dp"
-        android:layout_height="350dp"
-        android:layout_marginStart="1dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" android:layout_marginStart="1dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="1dp"
+        android:layout_marginBottom="4dp"
         app:cardBackgroundColor="#3D8A4F"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#1E5631">
+            android:layout_height="wrap_content" android:background="#1E5631"
+            android:padding="16dp">
 
             <ImageView
-                android:id="@+id/imgEquipo"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="109dp"
-                android:layout_marginBottom="121dp"
+                android:id="@+id/imgFoto" android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
-                android:id="@+id/txtEquipo"
-                android:layout_width="180dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="41dp"
-                android:text=""
-                app:layout_constraintBottom_toTopOf="@+id/txtDescripcion"
+                android:id="@+id/txtNombre" android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:text="Nombre del Equipo"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.505"
-                app:layout_constraintStart_toEndOf="@+id/imgEquipo"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintStart_toEndOf="@+id/imgFoto"
+                app:layout_constraintTop_toTopOf="@+id/imgFoto" />
 
             <TextView
-                android:id="@+id/txtDescripcion"
-                android:layout_width="180dp"
-                android:layout_height="230dp"
-                android:layout_marginBottom="11dp"
-                android:text=""
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:id="@+id/txtDescripcion" android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:maxLines="3"
+                android:ellipsize="end"
+                android:textColor="#C8C8C8"
+                android:text="Descripción corta del equipo..."
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imgEquipo" />
+                app:layout_constraintStart_toEndOf="@+id/imgFoto"
+                app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

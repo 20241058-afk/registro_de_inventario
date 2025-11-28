@@ -31,69 +31,59 @@ class MainActivity : AppCompatActivity(), MainContrac {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(bars.left, bars.top, bars.right, bars.bottom)
             insets
         }
 
-        // Inicialización de Vistas
         btnLogin = findViewById(R.id.btnLogin)
         rcvLista = findViewById(R.id.rcvLista)
         rcvLista.layoutManager = LinearLayoutManager(this)
 
         playerView = findViewById(R.id.playerView)
-        initializePlayer()
+        startPlayer()
 
         presenter = MainPresenter(this)
         presenter.obtenerEquipos()
 
         btnLogin.setOnClickListener {
-            val intent = Intent(this, Login::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, Login::class.java))
         }
     }
 
-    private fun initializePlayer() {
+    private fun startPlayer() {
+        if (player != null) return
         player = ExoPlayer.Builder(this).build()
         playerView.player = player
-
-        val mediaItem = MediaItem.fromUri("https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4")
-        player?.setMediaItem(mediaItem)
+        player?.setMediaItem(MediaItem.fromUri(""))
         player?.prepare()
-        player?.playWhenReady = true
+        player?.playWhenReady = false
     }
 
-    private fun releasePlayer() {
+    private fun stopPlayer() {
         player?.release()
         player = null
     }
 
     override fun onStart() {
         super.onStart()
-        if (player == null) {
-            initializePlayer()
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        player?.playWhenReady = true
-    }
-
-    override fun onPause() {
-        super.onPause()
-        player?.playWhenReady = false
+        startPlayer()
     }
 
     override fun onStop() {
         super.onStop()
-        releasePlayer()
+        stopPlayer()
     }
 
     override fun mostrarEquipos(equipos: List<clsEquipos>) {
-        val adaptador = equiposAdapter(this, equipos)
-        rcvLista.adapter = adaptador
+        if (equipos.isEmpty()) {
+            Toast.makeText(this, "Sin equipos registrados", Toast.LENGTH_SHORT).show()
+            rcvLista.adapter = equiposAdapter(this, emptyList())
+        } else {
+            rcvLista.adapter = equiposAdapter(this, equipos)
+        }
     }
 
     override fun mostrarError(mensaje: String) {

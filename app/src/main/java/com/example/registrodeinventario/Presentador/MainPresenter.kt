@@ -25,21 +25,24 @@ class MainPresenter(private val view: MainContrac) {
 
     fun obtenerEquipos() {
         apiService.obtenerEquipos().enqueue(object : Callback<List<clsEquipos>> {
-            override fun onResponse(call: Call<List<clsEquipos>>, response: Response<List<clsEquipos>>) {
+            override fun onResponse(
+                call: Call<List<clsEquipos>>,
+                response: Response<List<clsEquipos>>
+            ) {
                 if (response.isSuccessful) {
-                    response.body()?.let { peliculas ->
-                        view.mostrarEquipos(peliculas)
-                    } ?: run {
-                        view.mostrarError("Error: La lista de películas está vacía.")
+                    val equipos = response.body() ?: emptyList()
+                    if (equipos.isEmpty()) {
+                        view.mostrarError("No hay equipos registrados")
+                    } else {
+                        view.mostrarEquipos(equipos)
                     }
                 } else {
-                    val errorMessage = "Error ${response.code()}: ${response.message()}"
-                    view.mostrarError(errorMessage)
+                    view.mostrarError("Error ${response.code()}")
                 }
             }
 
             override fun onFailure(call: Call<List<clsEquipos>>, t: Throwable) {
-                view.mostrarError("Fallo de conexión: ${t.message}")
+                view.mostrarError("Fallo: ${t.message}")
             }
         })
     }

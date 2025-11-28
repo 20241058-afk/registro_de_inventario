@@ -1,8 +1,13 @@
 package com.example.registrodeinventario.Modelo
 
+
 data class clsEquipos(
-    val idEquipo:Int,
-    val Nombre:String,
-    val Descripcion:String,
-    val Imagen:String
+    val id_equipo: Int,
+    val nombre: String,
+    val descripcion: String,
+    val ruta_imagen: String,
+    val codigo_qr: String,
+    val id_categoria: Int,
+    val estado: String,
+    val fecha_registro: String
 )

@@ -6,38 +6,38 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.bumptech.glide.Glide
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.registrodeinventario.Modelo.clsEquipos
 import com.example.registrodeinventario.R
 
-class equiposAdapter(val contexto: Context,val listaEquipo:List<clsEquipos>):RecyclerView.Adapter<equiposAdapter.equipoViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup,viewType: Int): equipoViewHolder {
-        //Aqui haremos el vinculocon el layout
-        val view= LayoutInflater.from(parent.context).inflate(R.layout.equipos_layout,parent,false)
-        return equipoViewHolder(view)
+class equiposAdapter(
+    private val context: Context,
+    private val lista: List<clsEquipos>
+) : RecyclerView.Adapter<equiposAdapter.ViewHolder>() {
+
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val txtNombre: TextView = itemView.findViewById(R.id.txtNombre)
+        val txtDescripcion: TextView = itemView.findViewById(R.id.txtDescripcion)
+        val imgFoto: ImageView = itemView.findViewById(R.id.imgFoto)
     }
 
-    override fun onBindViewHolder(holder: equipoViewHolder,position: Int) {
-        val equipo=listaEquipo[position]
-
-        holder.txtnombre.text=equipo.Nombre
-        holder.txtdescripcion.text=equipo.Descripcion
-
-        Glide.with(contexto)
-            .load("https://inventariocomputo.grupoctic.com/img/"+holder.imgequipo)
-            .into(holder.imgequipo)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val vista = LayoutInflater.from(context)
+            .inflate(R.layout.equipos_layout, parent, false)
+        return ViewHolder(vista)
     }
 
-    override fun getItemCount(): Int {
-        return listaEquipo.size
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val equipo = lista[position]
+
+        holder.txtNombre.text = equipo.nombre
+        holder.txtDescripcion.text = equipo.descripcion
+
+        Glide.with(context)
+            .load(equipo.ruta_imagen)
+            .into(holder.imgFoto)
     }
 
-    class equipoViewHolder(control: View): RecyclerView.ViewHolder(control){
-        val imgequipo: ImageView =control.findViewById(R.id.imgEquipo)
-        val txtnombre: TextView =control.findViewById(R.id.txtEquipo)
-        val txtdescripcion: TextView =control.findViewById(R.id.txtDescripcion)
-
-    }
-
+    override fun getItemCount(): Int = lista.size
 }

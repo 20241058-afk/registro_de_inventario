@@ -8,8 +8,11 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface ifaceApiService {
-    @GET("apiEquipos.php")
-    fun obtenerEquipos(): Call<List<clsEquipos>>
+    @POST("apiEquipos.php")
+    @FormUrlEncoded
+    fun obtenerEquipos(
+        @Field("action") action: String = "obtener_todos"
+    ): Call<List<clsEquipos>>
 
     //Para login y registro
     @FormUrlEncoded
