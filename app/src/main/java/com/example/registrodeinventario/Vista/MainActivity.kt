@@ -25,7 +25,9 @@ class MainActivity : AppCompatActivity(), MainContrac {
     private lateinit var rcvLista: RecyclerView
     private lateinit var presenter: MainPresenter
     private lateinit var playerView: StyledPlayerView
-    private var player: ExoPlayer? = null
+
+    // ÚNICO reproductor
+    private var exoPlayer: ExoPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,44 +40,59 @@ class MainActivity : AppCompatActivity(), MainContrac {
             insets
         }
 
+        // Referencias de UI
         btnLogin = findViewById(R.id.btnLogin)
         rcvLista = findViewById(R.id.rcvLista)
         rcvLista.layoutManager = LinearLayoutManager(this)
 
+        // VIDEO
         playerView = findViewById(R.id.playerView)
-        startPlayer()
+        startPlayer() // <-- IMPORTANTE inicializar aquí
 
+        // Presenter
         presenter = MainPresenter(this)
-        presenter.obtenerEquipos()
+        presenter.caragarVide()      // <-- YA ES SEGURO llamar el video
+        presenter.obtenerEquipos()   // <-- Cargar equipos de BD
 
         btnLogin.setOnClickListener {
-            startActivity(Intent(this, Login::class.java))
+            startActivity(Intent(this, Usuario::class.java))
         }
     }
 
+    // Inicializar el reproductor SIN cargar nada
     private fun startPlayer() {
-        if (player != null) return
-        player = ExoPlayer.Builder(this).build()
-        playerView.player = player
-        player?.setMediaItem(MediaItem.fromUri(""))
-        player?.prepare()
-        player?.playWhenReady = false
+        exoPlayer = ExoPlayer.Builder(this).build()
+        playerView.player = exoPlayer
     }
 
+    // Detener y liberar memoria
     private fun stopPlayer() {
-        player?.release()
-        player = null
+        exoPlayer?.release()
+        exoPlayer = null
     }
 
     override fun onStart() {
         super.onStart()
-        startPlayer()
+        if (exoPlayer == null) startPlayer()
     }
 
     override fun onStop() {
         super.onStop()
-        stopPlayer()
+        exoPlayer?.playWhenReady = false   // Pausa
+        exoPlayer?.pause()
+        // NO lo destruyas
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        exoPlayer?.release()
+        exoPlayer = null
+    }
+
+
+
+
+    // -------------------- MVP -----------------------
 
     override fun mostrarEquipos(equipos: List<clsEquipos>) {
         if (equipos.isEmpty()) {
@@ -88,5 +105,12 @@ class MainActivity : AppCompatActivity(), MainContrac {
 
     override fun mostrarError(mensaje: String) {
         Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun mostrarvideo(video: String) {
+        val mediaItem = MediaItem.fromUri(video)
+        exoPlayer?.setMediaItem(mediaItem)
+        exoPlayer?.prepare()
+        exoPlayer?.playWhenReady = true
     }
 }

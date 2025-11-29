@@ -10,8 +10,8 @@
 
     <View
         android:id="@+id/header"
-        android:layout_width="0dp"
-        android:layout_height="120dp"
+        android:layout_width="409dp"
+        android:layout_height="171dp"
         android:background="#27AE60"
         app:layout_constraintBottom_toTopOf="@+id/btnInventario"
         app:layout_constraintEnd_toEndOf="parent"
@@ -102,6 +102,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:textColor="@color/black"
         android:text="Menú"
         android:textSize="34sp"
         android:textStyle="bold|italic"

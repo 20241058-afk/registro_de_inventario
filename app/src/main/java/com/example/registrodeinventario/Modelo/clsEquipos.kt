@@ -9,5 +9,5 @@ data class clsEquipos(
     val codigo_qr: String,
     val id_categoria: Int,
     val estado: String,
-    val fecha_registro: String
-)
+    val fecha_registro: String)
+

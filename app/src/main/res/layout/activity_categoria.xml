@@ -36,21 +36,31 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
+
         android:id="@+id/textInputLayoutcategoria"
         android:layout_width="276dp"
         android:layout_height="68dp"
+        android:hint="Ingrese la categoria"
         android:layout_marginTop="172dp"
+        android:textColorHint="@color/black"
+        app:hintTextColor="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/txtCategoria"
         app:layout_constraintStart_toStartOf="@+id/txtCategoria"
         app:layout_constraintTop_toBottomOf="@+id/txtCategoria">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtcategoria"
-            android:layout_width="match_parent"
-            android:layout_height="59dp"
-            android:hint="Ingrese la categoria"
-            android:textColor="@color/black" />
+            android:id="@+id/edtCategoria"
+            android:layout_width="276dp"
+            android:layout_height="match_parent"
+            android:background="#D6D6D6"
+            android:inputType="text"
+            android:outlineSpotShadowColor="#000000"
+            android:textColor="@color/black"
+            android:textColorHint="#000000"
+            android:textSize="17sp"  />
     </com.google.android.material.textfield.TextInputLayout>
+
+
 
     <Button
         android:id="@+id/btnACategoria"

@@ -58,4 +58,9 @@ class Login: AppCompatActivity(), LoginContract {
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
+
+    override fun navegarAAdmin() {
+        startActivity(Intent(this, administrador::class.java))
+        finish()
+    }
 }

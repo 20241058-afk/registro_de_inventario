@@ -17,46 +17,60 @@
         android:textColor="@color/black"
         android:textSize="34sp"
         android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/edtNumInventario"
+        app:layout_constraintBottom_toTopOf="@+id/txt2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.397" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/edtNumInventario"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt1"
         android:layout_width="250dp"
-        android:layout_height="50dp"
+        android:layout_height="65dp"
         android:layout_marginBottom="16dp"
-        android:background="#D6D6D6"
-        android:ems="10"
         android:hint="@string/edtNumInventario"
-        android:inputType="text"
-        android:textAlignment="center"
-        android:textColor="@color/black"
         android:textColorHint="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/edtNumSerie"
-        app:layout_constraintEnd_toEndOf="@+id/txtInventario"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="@+id/txtInventario" />
-
-    <EditText
-        android:id="@+id/edtNumSerie"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="16dp"
-        android:background="#D6D6D6"
-        android:ems="10"
-        android:hint="@string/edtNumSerie"
-        android:inputType="text"
-
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
+        app:hintTextColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/spnCategoria"
-        app:layout_constraintEnd_toEndOf="@+id/edtNumInventario"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/edtNumInventario" />
+        app:layout_constraintEnd_toEndOf="@+id/txt2"
+        app:layout_constraintStart_toStartOf="@+id/txt2">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtNumInventario"
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:background="#D6D6D6"
+            android:inputType="text"
+            android:outlineSpotShadowColor="#000000"
+            android:textColor="@color/black"
+            android:textColorHint="#000000"
+            android:textSize="17sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt2"
+        android:layout_width="250dp"
+        android:layout_height="65dp"
+        android:hint="@string/edtNumSerie"
+        android:textColorHint="@color/black"
+        app:hintTextColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txt1"
+        app:layout_constraintEnd_toEndOf="@+id/txtInventario"
+        app:layout_constraintStart_toStartOf="@+id/txtInventario">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtNumSerie"
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:background="#D6D6D6"
+            android:inputType="text"
+            android:outlineSpotShadowColor="#000000"
+            android:textColor="@color/black"
+            android:textColorHint="#000000"
+            android:textSize="17sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Spinner
         android:id="@+id/spnCategoria"
@@ -67,9 +81,8 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/spnMarca"
-        app:layout_constraintEnd_toEndOf="@+id/edtNumSerie"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/edtNumSerie" />
+        app:layout_constraintEnd_toEndOf="@+id/txt1"
+        app:layout_constraintStart_toStartOf="@+id/txt1" />
 
     <Spinner
         android:id="@+id/spnMarca"

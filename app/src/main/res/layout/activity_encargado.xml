@@ -10,12 +10,12 @@
 
     <View
         android:id="@+id/header"
-        android:layout_width="0dp"
-        android:layout_height="120dp"
+        android:layout_width="422dp"
+        android:layout_height="95dp"
         android:background="#27AE60"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 
@@ -38,135 +38,217 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutNombreE"
         android:layout_width="286dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="65dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="4dp"
+        android:hint="Ingrese el nombre"
+        android:textColorHint="@color/black"
+        app:endIconTint="@color/black"
+        app:hintTextColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txtapellido"
         app:layout_constraintEnd_toEndOf="@+id/txtEncargado"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/txtEncargado"
-        app:layout_constraintTop_toBottomOf="@+id/txtEncargado">
+        app:layout_constraintStart_toStartOf="@+id/txtEncargado">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtNombreE"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:hint="Ingrese su nombre"
-            android:textColor="@color/black" />
+            android:layout_width="286dp"
+            android:layout_height="match_parent"
+            android:background="#D6D6D6"
+            android:inputType="text"
+            android:outlineSpotShadowColor="#000000"
+            android:textColor="@color/black"
+            android:textColorHint="#000000"
+            android:textSize="17sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutCorreoE"
+        android:id="@+id/txtapellido"
         android:layout_width="286dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="18dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="4dp"
+        android:hint="Ingrese el apellidido paterno"
+        android:textColorHint="@color/black"
+        app:hintTextColor="@color/black"
+        app:endIconTint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txtApellido2"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayoutNombreE"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayoutNombreE"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNombreE">
+        app:layout_constraintStart_toStartOf="@+id/textInputLayoutNombreE">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtCorreoE"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:hint="Ingrese su correo"
-            android:textColor="@color/black" />
+
+            android:id="@+id/edtAPaterno"
+            android:layout_width="286dp"
+            android:layout_height="match_parent"
+            android:background="#D6D6D6"
+            android:inputType="text"
+            android:outlineSpotShadowColor="#000000"
+            android:textColor="@color/black"
+            android:textColorHint="#000000"
+            android:textSize="17sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
-
-
-
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutPass1"
+        android:id="@+id/txtApellido2"
         android:layout_width="286dp"
         android:layout_height="50dp"
-        android:layout_marginTop="18dp"
-        app:endIconMode="password_toggle"
+        android:layout_marginBottom="4dp"
+        android:hint="ingrese el apellido materno"
+        android:textColorHint="@color/black"
+        app:hintTextColor="@color/black"
         app:endIconTint="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayoutCorreoE"
+        app:layout_constraintBottom_toTopOf="@+id/txtcorreo"
+        app:layout_constraintEnd_toEndOf="@+id/txtapellido"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayoutCorreoE"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCorreoE">
+        app:layout_constraintStart_toStartOf="@+id/txtapellido">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtPass1"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:hint="Ingrese su contraseña"
-            android:textColor="@color/black" />
+            android:id="@+id/edtAMaterno"
+            android:layout_width="286dp"
+            android:layout_height="match_parent"
+            android:background="#D6D6D6"
+            android:inputType="text"
+            android:outlineSpotShadowColor="#000000"
+            android:textColor="@color/black"
+            android:textColorHint="#000000"
+            android:textSize="17sp" />
     </com.google.android.material.textfield.TextInputLayout>
-
-
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutPass2"
+        android:id="@+id/txtcorreo"
         android:layout_width="286dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="18dp"
-        app:endIconMode="password_toggle"
+        android:layout_height="65dp"
+        android:layout_marginBottom="4dp"
+        android:hint="Ingrese el correo electronico"
+        android:textColorHint="@color/black"
+        app:hintTextColor="@color/black"
         app:endIconTint="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayoutPass1"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayoutPass1"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPass1">
+        app:layout_constraintBottom_toTopOf="@+id/txtMatricula"
+        app:layout_constraintEnd_toEndOf="@+id/txtApellido2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/txtApellido2">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtPass2"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:hint="Confirme su contraseña"
-            android:textColor="@color/black" />
+
+            android:id="@+id/edtCorreoE"
+            android:layout_width="286dp"
+            android:layout_height="match_parent"
+            android:background="#D6D6D6"
+            android:inputType="text"
+            android:outlineSpotShadowColor="#000000"
+            android:textColor="@color/black"
+            android:textColorHint="#000000"
+            android:textSize="17sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtMatricula"
+        android:layout_width="286dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="4dp"
+        android:hint="Ingrese la matricula"
+        android:textColorHint="@color/black"
+        app:hintTextColor="@color/black"
+        app:endIconTint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayoutPass"
+        app:layout_constraintEnd_toEndOf="@+id/txtcorreo"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txtcorreo">
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtUsuario"
+            android:layout_width="286dp"
+            android:layout_height="match_parent"
+            android:background="#D6D6D6"
+            android:inputType="text"
+            android:outlineSpotShadowColor="#000000"
+            android:textColor="@color/black"
+            android:textColorHint="#000000"
+            android:textSize="17sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutPass"
+        android:layout_width="286dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="4dp"
+        android:hint="Ingrese la contraseña"
+        android:textColorHint="@color/black"
+        app:hintTextColor="@color/black"
+        app:endIconMode="password_toggle"
+        app:endIconTint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayoutCodigoV"
+        app:layout_constraintEnd_toEndOf="@+id/txtMatricula"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/txtMatricula">
+
+        <com.google.android.material.textfield.TextInputEditText
+
+            android:id="@+id/edtPass"
+            android:layout_width="286dp"
+            android:layout_height="match_parent"
+            android:background="#D6D6D6"
+            android:inputType="textPassword"
+            android:outlineSpotShadowColor="#000000"
+            android:textColor="@color/black"
+            android:textColorHint="#000000"
+            android:textSize="17sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutCodigoV"
         android:layout_width="286dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="18dp"
-
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayoutPass2"
+        android:layout_height="65dp"
+        android:layout_marginBottom="4dp"
+        android:hint="ingrese el codigo de verificacion"
+        android:textColorHint="@color/black"
+        app:hintTextColor="@color/black"
+        app:endIconTint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/spnrol"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayoutPass"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayoutPass2"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPass2">
+        app:layout_constraintStart_toStartOf="@+id/textInputLayoutPass">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtCodigoV"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:hint="Ingrese su codigo de verificacion"
-            android:textColor="@color/black" />
+            android:layout_width="286dp"
+            android:layout_height="match_parent"
+            android:background="#D6D6D6"
+            android:inputType="text"
+            android:outlineSpotShadowColor="#000000"
+            android:textColor="@color/black"
+            android:textColorHint="#000000"
+            android:textSize="17sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnAgregarE"
         android:layout_width="286dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="90dp"
+        android:layout_marginBottom="34dp"
         android:backgroundTint="#1E5631"
         android:text="@string/btnAgregarE"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/spnrol"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/spnrol"
-        app:layout_constraintTop_toBottomOf="@+id/spnrol"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="@+id/spnrol" />
 
     <Spinner
         android:id="@+id/spnrol"
         android:layout_width="286dp"
         android:layout_height="52dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="16dp"
         android:background="#D6D6D6"
         android:textAlignment="center"
         android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/btnAgregarE"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayoutCodigoV"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayoutCodigoV"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCodigoV" />
+        app:layout_constraintStart_toStartOf="@+id/textInputLayoutCodigoV" />
 </androidx.constraintlayout.widget.ConstraintLayout>

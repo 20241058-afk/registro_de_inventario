@@ -18,7 +18,16 @@ class LoginPresenter(private val vista: LoginContract) {
                 return@iniciarSesion
             }
             if (respuesta != null && respuesta.Estado.lowercase() == "true") {
-                vista.navegarAMain()
+
+                val rol = respuesta.rol ?: 2
+
+                if (rol == 1) {
+                    // ADMIN
+                    vista.navegarAAdmin()
+                } else {
+                    // USUARIO NORMAL
+                    vista.navegarAMain()
+                }
             } else {
                 vista.mostrarMensaje(respuesta?.Salida ?: "Usuario o contraseña incorrectos")
             }

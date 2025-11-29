@@ -1,5 +1,6 @@
 package com.example.registrodeinventario.Presentador
 
+import com.example.registrodeinventario.Modelo.Obtenervideo
 import com.example.registrodeinventario.Modelo.clsEquipos
 import com.example.registrodeinventario.Modelo.ifaceApiService
 import com.example.registrodeinventario.Vista.Contracs.MainContrac
@@ -10,6 +11,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class MainPresenter(private val view: MainContrac) {
+    private val model = Obtenervideo()
     private val apiService: ifaceApiService
 
     init {
@@ -22,6 +24,7 @@ class MainPresenter(private val view: MainContrac) {
 
         apiService = retrofit.create(ifaceApiService::class.java)
     }
+
 
     fun obtenerEquipos() {
         apiService.obtenerEquipos().enqueue(object : Callback<List<clsEquipos>> {
@@ -46,4 +49,11 @@ class MainPresenter(private val view: MainContrac) {
             }
         })
     }
+
+    fun caragarVide(){
+            val url = model.obtenerURL()
+            view.mostrarvideo(url)
+
+    }
+
 }

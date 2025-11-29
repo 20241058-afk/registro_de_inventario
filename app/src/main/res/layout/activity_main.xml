@@ -8,31 +8,55 @@
     android:background="#D3E3CD"
     tools:context=".Vista.MainActivity">
 
+    <View
+        android:id="@+id/header"
+        android:layout_width="411dp"
+        android:layout_height="102dp"
+        android:background="#27AE60"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/txttitulo"
+        android:layout_width="209dp"
+        android:layout_height="94dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/txttitulo"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.011"
+        app:layout_constraintStart_toStartOf="@+id/header"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="137dp"
         android:layout_height="48dp"
-        android:layout_marginStart="242dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="32dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="#1E4228"
-        android:text="@string/btnLogin"
+        android:text="Menu"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/playerView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.941"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.812" />
+        app:layout_constraintVertical_bias="0.333" />
 
     <com.google.android.exoplayer2.ui.StyledPlayerView
         android:id="@+id/playerView"
         android:layout_width="345dp"
         android:layout_height="194dp"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="108dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:resize_mode="fit"
@@ -40,13 +64,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvLista"
-        android:layout_width="407dp"
-        android:layout_height="336dp"
+        android:layout_width="402dp"
+        android:layout_height="404dp"
         android:layout_marginStart="1dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playerView" />
+        app:layout_constraintTop_toBottomOf="@+id/playerView"
+        app:layout_constraintVertical_bias="0.785" />
 </androidx.constraintlayout.widget.ConstraintLayout>
