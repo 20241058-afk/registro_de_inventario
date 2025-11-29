@@ -16,6 +16,9 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+    buildFeatures {
+        viewBinding = true // Esta línea habilita la generación de la clase de Binding
+    }
 
     buildTypes {
         release {

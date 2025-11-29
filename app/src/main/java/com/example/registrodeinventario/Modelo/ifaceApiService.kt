@@ -31,4 +31,12 @@ interface ifaceApiService {
         @Field("email") email: String,
         @Field("password") password: String
     ): Call<List<clsDatosRespuesta>>
+
+    @FormUrlEncoded
+    @POST("apicategoria.php")
+    fun guardarCategoria(
+        @Field("action") action: String = "guardar_categoria",
+        @Field("nombre") nombre: String
+    ): Call<List<clsDatosRespuesta>>
+
 }
