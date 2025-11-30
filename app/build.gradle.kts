@@ -55,6 +55,9 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation ("com.github.bumptech.glide:glide:4.15.0")
     implementation ("com.google.android.exoplayer:exoplayer:2.19.1")
+    implementation("com.android.volley:volley:1.2.1")
+    implementation("org.json:json:20210307")
+
 
 
 }
