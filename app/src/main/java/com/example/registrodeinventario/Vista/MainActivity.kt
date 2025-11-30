@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity(), MainContrac {
 
     private lateinit var btnLogin: Button
     private lateinit var rcvLista: RecyclerView
-    private lateinit var presenter: MainPresenter
+    lateinit var presenter: MainPresenter
     private lateinit var playerView: StyledPlayerView
 
     // ÚNICO reproductor

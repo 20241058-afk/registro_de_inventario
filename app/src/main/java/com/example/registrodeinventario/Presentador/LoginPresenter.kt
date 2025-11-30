@@ -12,7 +12,7 @@ class LoginPresenter(private val vista: LoginContract) {
             vista.mostrarMensaje("Debe llenar todos los campos")
             return
         }
-        model.iniciarSesion(email, password) { respuesta, error ->
+        model.iniciarSesion(email, password, { respuesta, error ->
             if (error != null) {
                 vista.mostrarMensaje(error)
                 return@iniciarSesion
@@ -31,6 +31,7 @@ class LoginPresenter(private val vista: LoginContract) {
             } else {
                 vista.mostrarMensaje(respuesta?.Salida ?: "Usuario o contraseña incorrectos")
             }
-        }
+        } ) //{ callback ->
+           // callback.invoke(clsDatosRespuesta("true", "Bienvenido"), null)
     }
 }

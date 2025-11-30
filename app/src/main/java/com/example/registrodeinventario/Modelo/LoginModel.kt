@@ -8,7 +8,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class LoginModel {
+class  LoginModel {
 
     private val apiService: ifaceApiService
 
