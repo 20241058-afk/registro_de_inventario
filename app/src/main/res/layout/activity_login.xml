@@ -103,7 +103,7 @@
             android:id="@+id/edtUsuario"
             android:layout_width="250dp"
             android:layout_height="match_parent"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:textColorHint="#000000"
             android:outlineSpotShadowColor="#000000"
             android:background="#D6D6D6"

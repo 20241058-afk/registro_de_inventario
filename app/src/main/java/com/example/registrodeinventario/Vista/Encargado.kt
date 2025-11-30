@@ -15,7 +15,7 @@ class Encargado : AppCompatActivity(), EncargadoContract {
     private lateinit var edtAPaterno: EditText
     private lateinit var edtAMaterno: EditText
     private lateinit var edtCorreo: EditText
-    private lateinit var edtMatricula: EditText
+    private lateinit var edtusuario: EditText
     private lateinit var edtPass: EditText
     private lateinit var edtCodigo: EditText
     private lateinit var spnRol: Spinner
@@ -27,22 +27,26 @@ class Encargado : AppCompatActivity(), EncargadoContract {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_encargado)
 
+        // Inicializar el Presenter, pasando la Vista (this)
         presenter = EncargadoPresenter(this)
 
+        // Asignación de Vistas por ID
         edtNombre = findViewById(R.id.edtNombreE)
         edtAPaterno = findViewById(R.id.edtAPaterno)
         edtAMaterno = findViewById(R.id.edtAMaterno)
         edtCorreo = findViewById(R.id.edtCorreoE)
-        edtMatricula = findViewById(R.id.edtUsuario)
+        edtusuario = findViewById(R.id.edtUsuario)
         edtPass = findViewById(R.id.edtPass)
         edtCodigo = findViewById(R.id.edtCodigoV)
         spnRol = findViewById(R.id.spnrol)
         btnAgregar = findViewById(R.id.btnAgregarE)
-        btnEnviarCodigo=findViewById(R.id.btnenviar)
+        btnEnviarCodigo = findViewById(R.id.btnenviar)
 
 
+        // Cargar los roles al iniciar la actividad
         presenter.cargarRoles()
 
+        // Lógica del botón Enviar Código
         btnEnviarCodigo.setOnClickListener {
             val correo = edtCorreo.text.toString().trim()
 
@@ -54,35 +58,49 @@ class Encargado : AppCompatActivity(), EncargadoContract {
             presenter.enviarCodigo(correo)
         }
 
+        // Lógica del botón Agregar (Registro de usuario)
         btnAgregar.setOnClickListener {
+
+            // === VALIDACIÓN CRÍTICA DEL SPINNER ===
+            // Asegura que selectedItem no sea null (vacío) antes de llamar a toString()
+            val rolSeleccionado = spnRol.selectedItem?.toString()
+
+            if (rolSeleccionado.isNullOrEmpty()) {
+                mostrarMensaje("Error: El rol no está seleccionado o cargado.")
+                return@setOnClickListener
+            }
+            // =====================================
+
             presenter.guardarEncargadoConCodigo(
                 edtNombre.text.toString(),
                 edtAPaterno.text.toString(),
                 edtAMaterno.text.toString(),
                 edtCorreo.text.toString(),
-                edtMatricula.text.toString(),
+                edtusuario.text.toString(),
                 edtPass.text.toString(),
-                spnRol.selectedItem.toString(),
+                rolSeleccionado, // Usamos el valor ya validado
                 edtCodigo.text.toString()
             )
         }
-
     }
 
+    // Implementación de la función mostrarMensaje del contrato
     override fun mostrarMensaje(mensaje: String) {
-        Toast.makeText(this, mensaje ?: "Error desconocido", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
     }
 
+    // Implementación de la función limpiarCampos del contrato
     override fun limpiarCampos() {
         edtNombre.setText("")
         edtAPaterno.setText("")
         edtAMaterno.setText("")
         edtCorreo.setText("")
-        edtMatricula.setText("")
+        edtusuario.setText("")
         edtPass.setText("")
         edtCodigo.setText("")
     }
 
+    // Implementación de la función cargarRoles del contrato
     override fun cargarRoles(lista: List<String>) {
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, lista)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)

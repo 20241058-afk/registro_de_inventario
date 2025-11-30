@@ -44,18 +44,18 @@ interface ifaceApiService {
     ): Call<List<clsDatosRespuesta>>
 
 
-    //Obtener roles
+    // Obtener roles
     @GET("apiEncargado.php?action=obtener_roles")
-    fun obtenerRoles(): Call<List<Rol>>
+    fun obtenerRoles(): Call<List<String>>
 
-    //Enviar código
+    // Enviar código de verificación
     @FormUrlEncoded
     @POST("enviar_codigo.php")
     fun enviarCodigo(
         @Field("correo") correo: String
     ): Call<clsDatosRespuesta>
 
-    //Registrar usuario
+    // Registrar usuario (la API que falla con el 500)
     @FormUrlEncoded
     @POST("registrar_usuario.php")
     fun registrarUsuario(
@@ -63,9 +63,9 @@ interface ifaceApiService {
         @Field("ap_paterno") apPaterno: String,
         @Field("ap_materno") apMaterno: String,
         @Field("correo") correo: String,
-        @Field("matricula") matricula: String,
+        @Field("usuario") matricula: String,
         @Field("password") password: String,
-        @Field("rol") rol: String,          // ← ORDEN CORRECTO
+        @Field("rol") rol: String, // Enviamos el nombre del rol ("Administrador")
         @Field("codigo") codigoVerificacion: String
     ): Call<clsDatosRespuesta>
 

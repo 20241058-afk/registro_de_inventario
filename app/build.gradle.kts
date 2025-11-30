@@ -57,6 +57,7 @@ dependencies {
     implementation ("com.google.android.exoplayer:exoplayer:2.19.1")
     implementation("com.android.volley:volley:1.2.1")
     implementation("org.json:json:20210307")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0") // O la versión más reciente
 
 
 
