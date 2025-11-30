@@ -20,6 +20,8 @@ class Encargado : AppCompatActivity(), EncargadoContract {
     private lateinit var edtCodigo: EditText
     private lateinit var spnRol: Spinner
     private lateinit var btnAgregar: Button
+    private lateinit var btnEnviarCodigo: Button
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,25 +38,39 @@ class Encargado : AppCompatActivity(), EncargadoContract {
         edtCodigo = findViewById(R.id.edtCodigoV)
         spnRol = findViewById(R.id.spnrol)
         btnAgregar = findViewById(R.id.btnAgregarE)
+        btnEnviarCodigo=findViewById(R.id.btnenviar)
+
 
         presenter.cargarRoles()
 
+        btnEnviarCodigo.setOnClickListener {
+            val correo = edtCorreo.text.toString().trim()
+
+            if (correo.isEmpty()) {
+                mostrarMensaje("Ingresa un correo")
+                return@setOnClickListener
+            }
+
+            presenter.enviarCodigo(correo)
+        }
+
         btnAgregar.setOnClickListener {
-            presenter.guardarEncargado(
+            presenter.guardarEncargadoConCodigo(
                 edtNombre.text.toString(),
                 edtAPaterno.text.toString(),
                 edtAMaterno.text.toString(),
                 edtCorreo.text.toString(),
                 edtMatricula.text.toString(),
                 edtPass.text.toString(),
-                edtCodigo.text.toString(),
-                spnRol.selectedItem.toString()
+                spnRol.selectedItem.toString(),
+                edtCodigo.text.toString()
             )
         }
+
     }
 
     override fun mostrarMensaje(mensaje: String) {
-        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, mensaje ?: "Error desconocido", Toast.LENGTH_SHORT).show()
     }
 
     override fun limpiarCampos() {
