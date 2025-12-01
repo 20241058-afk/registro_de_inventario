@@ -80,6 +80,7 @@
         android:background="#D6D6D6"
         android:textAlignment="center"
         android:textColor="@color/black"
+        android:spinnerDropDownItemStyle="@style/SpinnerTextStyle"
         app:layout_constraintBottom_toTopOf="@+id/spnMarca"
         app:layout_constraintEnd_toEndOf="@+id/txt1"
         app:layout_constraintStart_toStartOf="@+id/txt1" />
@@ -92,6 +93,7 @@
         android:background="#D6D6D6"
         android:textAlignment="center"
         android:textColor="@color/black"
+        android:spinnerDropDownItemStyle="@style/SpinnerTextStyle"
         app:layout_constraintBottom_toTopOf="@+id/spnColor"
         app:layout_constraintEnd_toEndOf="@+id/spnCategoria"
         app:layout_constraintHorizontal_bias="0.0"
@@ -105,6 +107,7 @@
         android:background="#D6D6D6"
         android:textAlignment="center"
         android:textColor="@color/black"
+        android:spinnerDropDownItemStyle="@style/SpinnerTextStyle"
         app:layout_constraintBottom_toTopOf="@+id/btnAgregarI"
         app:layout_constraintEnd_toEndOf="@+id/spnMarca"
         app:layout_constraintHorizontal_bias="1.0"

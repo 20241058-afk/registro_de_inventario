@@ -63,10 +63,34 @@ interface ifaceApiService {
         @Field("ap_paterno") apPaterno: String,
         @Field("ap_materno") apMaterno: String,
         @Field("correo") correo: String,
-        @Field("usuario") matricula: String,
+        @Field("usuario") usuario: String,
         @Field("password") password: String,
-        @Field("rol") rol: String, // Enviamos el nombre del rol ("Administrador")
+        @Field("rol") rol: String,
         @Field("codigo") codigoVerificacion: String
     ): Call<clsDatosRespuesta>
+
+    @GET("apiInventario.php?action=obtener_color")
+    fun obtenerColor(): Call<List<ItemSpinner>>
+
+    @GET("apiInventario.php?action=obtener_marca")
+    fun obtenerMarca(): Call<List<ItemSpinner>>
+
+    @GET("apiInventario.php?action=obtener_categoria")
+    fun obtenerCategoria(): Call<List<ItemSpinner>>
+
+    @FormUrlEncoded
+    @POST("apiInventario.php")
+    fun guardarInventario(
+        @Field("action") action: String = "guardar_inventario",
+        @Field("num_inventario") numInv: String,
+        @Field("num_serie") numSerie: String,
+        @Field("nombre_categoria") categoria: String,
+        @Field("nombre_marca") marca: String,
+        @Field("nombre_color") color: String
+    ): Call<clsDatosRespuesta>
+
+
+
+
 
 }

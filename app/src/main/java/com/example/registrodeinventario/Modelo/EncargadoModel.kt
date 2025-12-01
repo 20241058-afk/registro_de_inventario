@@ -77,12 +77,12 @@ class EncargadoModel {
     // ---------------------------------------------------------
     fun verificarYGuardar(
         nombre: String, apPaterno: String, apMaterno: String,
-        correo: String, usuario: String, password: String,
+        correo: String, usuario: String, password: String, // Aquí usas 'usuario'
         rol: String, codigo: String, callback: (Boolean, String?) -> Unit
     ) {
         api.registrarUsuario(
             nombre, apPaterno, apMaterno, correo,
-            usuario, password, rol, codigo
+            usuario, password, rol, codigo // Asegúrate de pasar la variable correcta
         ).enqueue(object : Callback<clsDatosRespuesta> {
 
             override fun onResponse(call: Call<clsDatosRespuesta>, response: Response<clsDatosRespuesta>) {
