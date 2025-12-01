@@ -76,9 +76,9 @@ class Encargado : AppCompatActivity(), EncargadoContract {
                 edtAPaterno.text.toString(),
                 edtAMaterno.text.toString(),
                 edtCorreo.text.toString(),
-                edtusuario.text.toString(),
+                edtusuario.text.toString(), // <--- Este campo es el que se debe enviar
                 edtPass.text.toString(),
-                rolSeleccionado, // Usamos el valor ya validado
+                rolSeleccionado,
                 edtCodigo.text.toString()
             )
         }

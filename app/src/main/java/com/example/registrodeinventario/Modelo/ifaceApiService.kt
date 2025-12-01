@@ -63,9 +63,9 @@ interface ifaceApiService {
         @Field("ap_paterno") apPaterno: String,
         @Field("ap_materno") apMaterno: String,
         @Field("correo") correo: String,
-        @Field("usuario") matricula: String,
+        @Field("usuario") usuario: String,
         @Field("password") password: String,
-        @Field("rol") rol: String, // Enviamos el nombre del rol ("Administrador")
+        @Field("rol") rol: String,
         @Field("codigo") codigoVerificacion: String
     ): Call<clsDatosRespuesta>
 
