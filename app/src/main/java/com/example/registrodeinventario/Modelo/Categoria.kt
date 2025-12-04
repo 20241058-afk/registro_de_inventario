@@ -1,6 +1,9 @@
 package com.example.registrodeinventario.Modelo
 
-data class Categoria(
-    val id_categoria: String,
-    val nombre: String
-)
+import com.google.gson.annotations.SerializedName
+
+data class Categoria(val id: Int, val nombre: String){ // Asumiendo estos campos
+    override fun toString(): String {
+        return nombre // Muestra el nombre en el Spinner
+    }
+}

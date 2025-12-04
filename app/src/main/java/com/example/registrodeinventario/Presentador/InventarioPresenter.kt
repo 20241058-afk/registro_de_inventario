@@ -3,7 +3,7 @@ package com.example.registrodeinventario.Presentador
 import android.content.Context
 import com.example.registrodeinventario.Modelo.InventarioModel
 import com.example.registrodeinventario.Vista.Contracs.InventarioContract
-
+import com.example.registrodeinventario.Modelo.Categoria
 class InventarioPresenter(private val view: InventarioContract) {
 
     private val model = InventarioModel()

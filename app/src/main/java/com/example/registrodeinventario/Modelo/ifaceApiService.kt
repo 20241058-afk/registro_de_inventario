@@ -6,6 +6,7 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface ifaceApiService {
 
@@ -70,13 +71,13 @@ interface ifaceApiService {
     ): Call<clsDatosRespuesta>
 
     @GET("apiInventario.php?action=obtener_color")
-    fun obtenerColor(): Call<List<ItemSpinner>>
+    fun obtenerColor(): Call<List<Color>>
 
     @GET("apiInventario.php?action=obtener_marca")
-    fun obtenerMarca(): Call<List<ItemSpinner>>
+    fun obtenerMarca(): Call<List<Marca>>
 
     @GET("apiInventario.php?action=obtener_categoria")
-    fun obtenerCategoria(): Call<List<ItemSpinner>>
+    fun obtenerCategoria(): Call<List<Categoria>>
 
     @FormUrlEncoded
     @POST("apiInventario.php")
@@ -90,6 +91,21 @@ interface ifaceApiService {
     ): Call<clsDatosRespuesta>
 
 
+
+    @FormUrlEncoded
+    @POST("apiLogin.php") // cambia por la ruta real de tu login
+    fun login(
+        @Field("usuario") usuario: String,
+        @Field("password") password: String
+    ): Call<clsUsuario>
+
+    data class HistorialResponse(
+        val Estado: String,
+        val Historial: List<clsHistorial>
+    )
+
+    @GET("apiHistorial.php")
+    fun obtenerHistorial(@Query("id_usuario") idUsuario: Int): Call<clsRespuestaHistorial>
 
 
 

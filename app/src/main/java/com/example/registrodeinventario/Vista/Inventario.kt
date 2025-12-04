@@ -10,7 +10,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.registrodeinventario.Modelo.ItemSpinner
+import com.example.registrodeinventario.Modelo.Color
+import com.example.registrodeinventario.Modelo.Categoria
+import com.example.registrodeinventario.Modelo.Marca
 import com.example.registrodeinventario.Presentador.InventarioPresenter
 import com.example.registrodeinventario.R
 import com.example.registrodeinventario.Vista.Contracs.InventarioContract
@@ -47,10 +49,22 @@ class Inventario : AppCompatActivity(), InventarioContract {
         btnGuardar.setOnClickListener {
             val numInv = edtNumInventario.text.toString()
             val serie = edtNumSerie.text.toString()
-            val categoria = (spnCategoria.selectedItem as ItemSpinner).id
-            val marca = (spnMarca.selectedItem as ItemSpinner).id
-            val color = (spnColor.selectedItem as ItemSpinner).id
 
+            // 1. Casteo al tipo de objeto REAL que está en el Spinner
+            val categoriaSeleccionada = spnCategoria.selectedItem as com.example.registrodeinventario.Modelo.Categoria
+            val marcaSeleccionada = spnMarca.selectedItem as com.example.registrodeinventario.Modelo.Marca
+            val colorSeleccionado = spnColor.selectedItem as com.example.registrodeinventario.Modelo.Color
+
+            // 2. Obtener el ID de la propiedad 'id' (como lo requiere el PHP para el INSERT)
+            val categoria = categoriaSeleccionada.id.toString()
+            val marca = marcaSeleccionada.id.toString()
+            val color = colorSeleccionado.id.toString()
+
+            // 3. ¡VALIDACIÓN CRÍTICA!: Evitar enviar 0 o IDs inválidos
+            if (categoria.toInt() <= 0 || marca.toInt() <= 0 || color.toInt() <= 0) {
+                mostrarMensaje("Selecciona opciones válidas (no 'id=0, nombre=null').")
+                return@setOnClickListener // Detiene el proceso de guardado
+            }
 
             presenter.guardarInventario(this@Inventario, numInv, serie, categoria, marca, color)
         }
@@ -66,22 +80,25 @@ class Inventario : AppCompatActivity(), InventarioContract {
         edtNumSerie.setText("")
     }
 
-    override fun cargarColor(lista: List<ItemSpinner>) {
+    override fun cargarColor(lista: List<Color>) {
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, lista)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spnColor.adapter = adapter
     }
 
-    override fun cargarMarca(lista: List<ItemSpinner>) {
+    override fun cargarMarca(lista: List<com.example.registrodeinventario.Modelo.Marca>) {
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, lista)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spnMarca.adapter = adapter
     }
 
-    override fun cargarCategoria(lista: List<ItemSpinner>) {
+    override fun cargarCategoria(lista: List<com.example.registrodeinventario.Modelo.Categoria>) {
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, lista)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spnCategoria.adapter = adapter
     }
+
+
+
 
 }
