@@ -10,8 +10,10 @@ class EncargadoPresenter(private val view: EncargadoContract) {
     fun cargarRoles() {
         // Usando el método de Retrofit del Model
         model.obtenerRoles { lista, error ->
-            if (lista != null) {
-                view.cargarRoles(lista)
+            if (lista != null) {val listaConMensaje = mutableListOf("Seleccione un rol")
+                listaConMensaje.addAll(lista)
+
+                view.cargarRoles(listaConMensaje)
             } else {
                 view.mostrarMensaje(error ?: "Error al cargar roles")
             }
@@ -29,6 +31,10 @@ class EncargadoPresenter(private val view: EncargadoContract) {
         correo: String, usuario: String, password: String,
         rol: String, codigo: String
     ) {
+        if (rol == "Seleccione un rol") {
+            view.mostrarMensaje("Debe seleccionar un rol")
+            return
+        }
         model.verificarYGuardar(
             nombre, apPaterno, apMaterno, correo,
             usuario, password, rol, codigo
