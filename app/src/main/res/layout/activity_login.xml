@@ -93,7 +93,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginBottom="36dp"
         android:textColorHint="@color/black"
-        android:hint="@string/edtUsuario"
+        android:hint="Correo"
         app:hintTextColor="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/imageView4"
         app:layout_constraintStart_toStartOf="@+id/imageView4"

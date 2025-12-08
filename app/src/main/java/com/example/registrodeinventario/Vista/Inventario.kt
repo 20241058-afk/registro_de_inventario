@@ -8,9 +8,9 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.registrodeinventario.Modelo.ItemSpinner
+import com.example.registrodeinventario.Modelo.Color
+import com.example.registrodeinventario.Modelo.Categoria
+import com.example.registrodeinventario.Modelo.Marca
 import com.example.registrodeinventario.Presentador.InventarioPresenter
 import com.example.registrodeinventario.R
 import com.example.registrodeinventario.Vista.Contracs.InventarioContract
@@ -39,7 +39,7 @@ class Inventario : AppCompatActivity(), InventarioContract {
         spnColor = findViewById(R.id.spnColor)
         btnGuardar = findViewById(R.id.btnAgregarI)
 
-
+        // Cargar datos en los Spinners
         presenter.cargarColor()
         presenter.cargarMarca()
         presenter.cargarCategoria()
@@ -47,14 +47,37 @@ class Inventario : AppCompatActivity(), InventarioContract {
         btnGuardar.setOnClickListener {
             val numInv = edtNumInventario.text.toString()
             val serie = edtNumSerie.text.toString()
-            val categoria = (spnCategoria.selectedItem as ItemSpinner).id
-            val marca = (spnMarca.selectedItem as ItemSpinner).id
-            val color = (spnColor.selectedItem as ItemSpinner).id
 
+            val categoriaSeleccionada = spnCategoria.selectedItem as Categoria
+            val marcaSeleccionada = spnMarca.selectedItem as Marca
+            val colorSeleccionado = spnColor.selectedItem as Color
 
-            presenter.guardarInventario(this@Inventario, numInv, serie, categoria, marca, color)
+            // VALIDACIONES INDIVIDUALES
+            when {
+                categoriaSeleccionada.id == 0 -> {
+                    mostrarMensaje("Debes seleccionar una categoría")
+                    return@setOnClickListener
+                }
+                marcaSeleccionada.id == 0 -> {
+                    mostrarMensaje("Debes seleccionar una marca")
+                    return@setOnClickListener
+                }
+                colorSeleccionado.id == 0 -> {
+                    mostrarMensaje("Debes seleccionar un color")
+                    return@setOnClickListener
+                }
+            }
+
+            // Si todo está bien → Guardar
+            presenter.guardarInventario(
+                this@Inventario,
+                numInv,
+                serie,
+                categoriaSeleccionada.id.toString(),
+                marcaSeleccionada.id.toString(),
+                colorSeleccionado.id.toString()
+            )
         }
-
     }
 
     override fun mostrarMensaje(mensaje: String) {
@@ -64,24 +87,26 @@ class Inventario : AppCompatActivity(), InventarioContract {
     override fun limpiarCampos() {
         edtNumInventario.setText("")
         edtNumSerie.setText("")
+        spnColor.setSelection(0)
+        spnMarca.setSelection(0)
+        spnCategoria.setSelection(0)
     }
 
-    override fun cargarColor(lista: List<ItemSpinner>) {
+    override fun cargarColor(lista: List<Color>) {
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, lista)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spnColor.adapter = adapter
     }
 
-    override fun cargarMarca(lista: List<ItemSpinner>) {
+    override fun cargarMarca(lista: List<Marca>) {
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, lista)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spnMarca.adapter = adapter
     }
 
-    override fun cargarCategoria(lista: List<ItemSpinner>) {
+    override fun cargarCategoria(lista: List<Categoria>) {
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, lista)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spnCategoria.adapter = adapter
     }
-
 }

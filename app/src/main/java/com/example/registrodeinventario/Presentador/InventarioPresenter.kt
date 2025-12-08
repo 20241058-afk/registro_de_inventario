@@ -3,6 +3,9 @@ package com.example.registrodeinventario.Presentador
 import android.content.Context
 import com.example.registrodeinventario.Modelo.InventarioModel
 import com.example.registrodeinventario.Vista.Contracs.InventarioContract
+import com.example.registrodeinventario.Modelo.Categoria
+import com.example.registrodeinventario.Modelo.Color
+import com.example.registrodeinventario.Modelo.Marca
 
 class InventarioPresenter(private val view: InventarioContract) {
 
@@ -56,21 +59,45 @@ class InventarioPresenter(private val view: InventarioContract) {
 
     fun cargarColor() {
         model.obtenerColor { lista, err ->
-            if (lista != null) view.cargarColor(lista)
-            else view.mostrarMensaje(err ?: "Error al cargar color")
+            if (lista != null){
+                val nuevaLista = mutableListOf<Color>()
+                nuevaLista.add(Color(0, "Seleccione una color"))  // ID = 0
+                nuevaLista.addAll(lista)
+
+                view.cargarColor(nuevaLista)
+            }
+            else {
+                view.mostrarMensaje(err ?: "Error al cargar color")
+            }
         }
     }
 
     fun cargarMarca() {
         model.obtenerMarca { lista, err ->
-            if (lista != null) view.cargarMarca(lista)
-            else view.mostrarMensaje(err ?: "Error al cargar marca")
+            if (lista != null)
+            {
+                val nuevaLista = mutableListOf<Marca>()
+                nuevaLista.add(Marca(0, "Seleccione una marca"))  // ID = 0
+                nuevaLista.addAll(lista)
+
+                view.cargarMarca(nuevaLista)
+
+            }
+            else{
+                view.mostrarMensaje(err ?: "Error al cargar marca")
+            }
         }
     }
 
     fun cargarCategoria() {
         model.obtenerCategoria { lista, err ->
-            if (lista != null) view.cargarCategoria(lista)
+            if (lista != null){
+                val nuevaLista = mutableListOf<Categoria>()
+                nuevaLista.add(Categoria(0, "Seleccione una categoría"))  // ID = 0
+                nuevaLista.addAll(lista)
+
+                view.cargarCategoria(nuevaLista)
+            }
             else view.mostrarMensaje(err ?: "Error al cargar categoría")
         }
     }

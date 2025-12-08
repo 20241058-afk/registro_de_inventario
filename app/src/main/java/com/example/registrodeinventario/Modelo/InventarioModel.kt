@@ -73,40 +73,60 @@ class InventarioModel {
         queue.add(postRequest)
     }
 
-    fun obtenerColor(callback: (List<ItemSpinner>?, String?) -> Unit) {
-        api.obtenerColor().enqueue(object : Callback<List<ItemSpinner>> {
-            override fun onResponse(call: Call<List<ItemSpinner>>, resp: Response<List<ItemSpinner>>) {
-                if (resp.isSuccessful) callback(resp.body(), null)
+    fun obtenerColor(callback: (List<Color>?, String?) -> Unit) {
+        api.obtenerColor().enqueue(object : Callback<List<Color>> {
+
+            override fun onResponse(call: Call<List<Color>?>,response: Response<List<Color>?>
+            ) {
+                // Ahora response.body() (List<Color>) coincide con el tipo que espera el callback.
+                if (response.isSuccessful) callback(response.body(), null)
                 else callback(null, "Error al cargar colores")
             }
 
-            override fun onFailure(call: Call<List<ItemSpinner>>, t: Throwable) {
+            override fun onFailure(
+                call: Call<List<Color>?>,
+                t: Throwable
+            ) {
                 callback(null, t.message)
             }
         })
     }
 
-    fun obtenerMarca(callback: (List<ItemSpinner>?, String?) -> Unit) {
-        api.obtenerMarca().enqueue(object : Callback<List<ItemSpinner>> {
-            override fun onResponse(call: Call<List<ItemSpinner>>, resp: Response<List<ItemSpinner>>) {
-                if (resp.isSuccessful) callback(resp.body(), null)
+    // 2. CORRECCIÓN para Marca: Cambia List<ItemSpinner> por List<Marca>
+    fun obtenerMarca(callback: (List<Marca>?, String?) -> Unit) {
+        api.obtenerMarca().enqueue(object : Callback<List<Marca>> {
+
+            override fun onResponse(call: Call<List<Marca>?>,response: Response<List<Marca>?>
+            ) {
+                // Ahora response.body() (List<Marca>) coincide con el tipo que espera el callback.
+                if (response.isSuccessful) callback(response.body(), null)
                 else callback(null, "Error al cargar marcas")
             }
 
-            override fun onFailure(call: Call<List<ItemSpinner>>, t: Throwable) {
+            override fun onFailure(
+                call: Call<List<Marca>?>,
+                t: Throwable
+            ) {
                 callback(null, t.message)
             }
         })
     }
 
-    fun obtenerCategoria(callback: (List<ItemSpinner>?, String?) -> Unit) {
-        api.obtenerCategoria().enqueue(object : Callback<List<ItemSpinner>> {
-            override fun onResponse(call: Call<List<ItemSpinner>>, resp: Response<List<ItemSpinner>>) {
-                if (resp.isSuccessful) callback(resp.body(), null)
+    // 3. CORRECCIÓN para Categoría: Cambia List<ItemSpinner> por List<Categoria>
+    fun obtenerCategoria(callback: (List<Categoria>?, String?) -> Unit) {
+        api.obtenerCategoria().enqueue(object : Callback<List<Categoria>> {
+
+            override fun onResponse(call: Call<List<Categoria>?>, response: Response<List<Categoria>?>
+            ) {
+                // Ahora response.body() (List<Categoria>) coincide con el tipo que espera el callback.
+                if (response.isSuccessful) callback(response.body(), null)
                 else callback(null, "Error al cargar categorías")
             }
 
-            override fun onFailure(call: Call<List<ItemSpinner>>, t: Throwable) {
+            override fun onFailure(
+                call: Call<List<Categoria>?>,
+                t: Throwable
+            ) {
                 callback(null, t.message)
             }
         })

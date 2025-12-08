@@ -3,6 +3,7 @@ package com.example.registrodeinventario.Vista
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.example.registrodeinventario.Modelo.Rol
 import com.example.registrodeinventario.Presentador.EncargadoPresenter
 import com.example.registrodeinventario.R
 import com.example.registrodeinventario.Vista.Contracs.EncargadoContract
@@ -98,6 +99,8 @@ class Encargado : AppCompatActivity(), EncargadoContract {
         edtusuario.setText("")
         edtPass.setText("")
         edtCodigo.setText("")
+        presenter.cargarRoles()
+
     }
 
     // Implementación de la función cargarRoles del contrato

@@ -39,15 +39,15 @@ class EncargadoModel {
     fun obtenerRoles(callback: (List<String>?, String?) -> Unit) {
         // Usamos api.obtenerRoles() que devuelve Call<List<String>>
         api.obtenerRoles().enqueue(object : Callback<List<String>> {
-            override fun onResponse(call: Call<List<String>>, response: Response<List<String>>) {
+            override fun onResponse(call: Call<List<String>?>, response: Response<List<String>?>) {
                 if (response.isSuccessful) {
-                    // Aquí el body es List<String>, lo pasamos directamente
                     callback(response.body(), null)
                 } else {
-                    callback(null, "Error al cargar roles: ${response.code()}")
+                    callback(null, "Error al obtener roles")
                 }
             }
-            override fun onFailure(call: Call<List<String>>, t: Throwable) {
+
+            override fun onFailure(call: Call<List<String>?>, t: Throwable) {
                 callback(null, t.message ?: "Error de red al cargar roles")
             }
         })
