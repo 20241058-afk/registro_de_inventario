@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.registrodeinventario.Presentador.LoginPresenter
 import com.example.registrodeinventario.R
+import com.example.registrodeinventario.Test
 import com.example.registrodeinventario.Vista.Contracs.LoginContract
 
 class Login: AppCompatActivity(), LoginContract {
@@ -25,6 +26,19 @@ class Login: AppCompatActivity(), LoginContract {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_login)
+
+        var test = Test
+        test.probarMarca()
+        test.probarLogin("20240996@uthh.edu.mx","123123")
+        test.probarEnviarCodigo("20241000@uthh.edu.mx")
+        test.probarGuardarMarca("DELL")
+        test.probarGuardarCategoria("Ejemplo")
+        test.probarGuardarInventario("10","25487999","Ejemplo","DELL","Negro")
+        test.probarObtenerCategoriaInv()
+        test.probarObtenerEquipos()
+        test.probarObtenerRoles()
+        test.probarObtenerColor()
+        test.probarRegistrarUsuario("Flor","Olivares","Cortes","20241028@uthh.edu.mx","Itzel","123456","1","2025")
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

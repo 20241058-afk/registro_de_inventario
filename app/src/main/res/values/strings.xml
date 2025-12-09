@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LoanWarea </string>
+    <string name="app_name">LoanWare </string>
     <string name="btnLogin">Iniciar sesión</string>
     <string name="edtUsuario">Usuario</string>
     <string name="edtPass">Contraseña</string>

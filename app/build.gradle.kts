@@ -58,7 +58,8 @@ dependencies {
     implementation("com.android.volley:volley:1.2.1")
     implementation("org.json:json:20210307")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0") // O la versión más reciente
-
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation(kotlin("test"))
 
 
 }
