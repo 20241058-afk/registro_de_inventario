@@ -2,6 +2,7 @@ package com.example.registrodeinventario.Vista
 
 import android.content.Intent
 import android.os.Bundle
+import android.provider.SyncStateContract
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -12,7 +13,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.registrodeinventario.Presentador.LoginPresenter
 import com.example.registrodeinventario.R
-import com.example.registrodeinventario.Test
 import com.example.registrodeinventario.Vista.Contracs.LoginContract
 
 class Login: AppCompatActivity(), LoginContract {
@@ -26,19 +26,6 @@ class Login: AppCompatActivity(), LoginContract {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_login)
-
-        var test = Test
-        test.probarMarca()
-        test.probarLogin("20240996@uthh.edu.mx","123123")
-        test.probarEnviarCodigo("20241000@uthh.edu.mx")
-        test.probarGuardarMarca("DELL")
-        test.probarGuardarCategoria("Ejemplo")
-        test.probarGuardarInventario("10","25487999","Ejemplo","DELL","Negro")
-        test.probarObtenerCategoriaInv()
-        test.probarObtenerEquipos()
-        test.probarObtenerRoles()
-        test.probarObtenerColor()
-        test.probarRegistrarUsuario("Flor","Olivares","Cortes","20241028@uthh.edu.mx","Itzel","123456","1","2025")
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -67,14 +54,31 @@ class Login: AppCompatActivity(), LoginContract {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
 
+    // 🚀 NUEVA IMPLEMENTACIÓN DE NAVEGACIÓN (usa el ID)
+    override fun navegarPorRol(userId: Int, rolId: Int) {
+        // Decide a qué pantalla navegar y pasa el ID del usuario
+
+        val destinoActivity = when (rolId) {
+            1 -> administrador::class.java
+            else -> MainActivity::class.java // O tu Activity principal
+        }
+
+        // CRÍTICO: Creamos el Intent y adjuntamos el ID del usuario usando la constante global.
+        val intent = Intent(this, destinoActivity).apply {
+            // USAMOS LA CONSTANTE GLOBAL SEGURA
+            putExtra(SyncStateContract.Constants.EXTRA_USER_ID, userId)
+        }
+
+        startActivity(intent)
+        finish()
+    }
 
     override fun navegarAMain() {
         startActivity(Intent(this, MainActivity::class.java))
-        finish()
     }
 
     override fun navegarAAdmin() {
         startActivity(Intent(this, administrador::class.java))
-        finish()
+
     }
 }

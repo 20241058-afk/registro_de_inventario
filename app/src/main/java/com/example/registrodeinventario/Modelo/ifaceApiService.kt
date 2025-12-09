@@ -2,6 +2,7 @@ package com.example.registrodeinventario.Modelo
 
 import com.example.registrodeinventario.Vista.clsDatosRespuesta
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -15,7 +16,6 @@ interface ifaceApiService {
     fun obtenerEquipos(
         @Field("action") action: String = "obtener_todos"
     ): Call<List<clsEquipos>>
-
 
     //Para login
     @FormUrlEncoded
@@ -105,7 +105,7 @@ interface ifaceApiService {
     )
 
     @GET("apiHistorial.php")
-    fun obtenerHistorial(@Query("id_usuario") idUsuario: Int): Call<clsRespuestaHistorial>
+    suspend fun obtenerHistorial(@Query("id_usuario") idUsuario: Int): Response<clsRespuestaHistorial>
 
 
 

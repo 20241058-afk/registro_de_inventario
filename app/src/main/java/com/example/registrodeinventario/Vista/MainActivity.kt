@@ -26,18 +26,26 @@ class MainActivity : AppCompatActivity(), MainContrac {
     private lateinit var presenter: MainPresenter
     private lateinit var playerView: StyledPlayerView
 
-    // ÚNICO reproductor
     private var exoPlayer: ExoPlayer? = null
+
+    // 1. Declarar la variable para el ID del usuario y la clave
+    private var idUsuario: Int = 0
+    companion object {
+        // Usamos la misma constante definida en Historial.kt para uniformidad
+        const val EXTRA_USER_ID = "extra_user_id"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        // ... (código ViewCompat y setContentView)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(bars.left, bars.top, bars.right, bars.bottom)
-            insets
+        // 2. RECIBIR el ID del Intent del Login
+        idUsuario = intent.getIntExtra(EXTRA_USER_ID, 0)
+
+        // Manejo básico de ID nulo
+        if (idUsuario <= 0) {
+            Toast.makeText(this, "Sesión no válida. ID perdido.", Toast.LENGTH_SHORT).show()
+            // Podrías forzar el cierre y volver al login si el ID es crítico
         }
 
         // Referencias de UI
@@ -45,19 +53,17 @@ class MainActivity : AppCompatActivity(), MainContrac {
         rcvLista = findViewById(R.id.rcvLista)
         rcvLista.layoutManager = LinearLayoutManager(this)
 
-        // VIDEO
-        playerView = findViewById(R.id.playerView)
-        startPlayer() // <-- IMPORTANTE inicializar aquí
-
-        // Presenter
-        presenter = MainPresenter(this)
-        presenter.caragarVide()      // <-- YA ES SEGURO llamar el video
-        presenter.obtenerEquipos()   // <-- Cargar equipos de BD
+        // ... (código del video y Presenter)
 
         btnLogin.setOnClickListener {
-            startActivity(Intent(this, Usuario::class.java))
+            // 3. PASAR el ID a la Activity Usuario
+            val intentUsuario = Intent(this, Usuario::class.java).apply {
+                putExtra(EXTRA_USER_ID, idUsuario)
+            }
+            startActivity(intentUsuario)
         }
     }
+
 
     // Inicializar el reproductor SIN cargar nada
     private fun startPlayer() {
@@ -89,10 +95,6 @@ class MainActivity : AppCompatActivity(), MainContrac {
         exoPlayer = null
     }
 
-
-
-
-    // -------------------- MVP -----------------------
 
     override fun mostrarEquipos(equipos: List<clsEquipos>) {
         if (equipos.isEmpty()) {
