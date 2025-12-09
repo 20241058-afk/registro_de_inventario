@@ -11,6 +11,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.registrodeinventario.Constants
 import com.example.registrodeinventario.Presentador.LoginPresenter
 import com.example.registrodeinventario.R
 import com.example.registrodeinventario.Vista.Contracs.LoginContract
@@ -66,7 +67,7 @@ class Login: AppCompatActivity(), LoginContract {
         // CRÍTICO: Creamos el Intent y adjuntamos el ID del usuario usando la constante global.
         val intent = Intent(this, destinoActivity).apply {
             // USAMOS LA CONSTANTE GLOBAL SEGURA
-            putExtra(SyncStateContract.Constants.EXTRA_USER_ID, userId)
+            putExtra(Constants.EXTRA_USER_ID, userId)
         }
 
         startActivity(intent)
