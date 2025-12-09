@@ -10,6 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.registrodeinventario.Constants // 🚨 Usa la constante global para uniformidad
 import com.example.registrodeinventario.Modelo.clsEquipos
 import com.example.registrodeinventario.Presentador.MainPresenter
 import com.example.registrodeinventario.R
@@ -27,38 +28,49 @@ class MainActivity : AppCompatActivity(), MainContrac {
     private lateinit var playerView: StyledPlayerView
 
     private var exoPlayer: ExoPlayer? = null
-
-    // 1. Declarar la variable para el ID del usuario y la clave
     private var idUsuario: Int = 0
-    companion object {
-        // Usamos la misma constante definida en Historial.kt para uniformidad
-        const val EXTRA_USER_ID = "extra_user_id"
-    }
+
+    // ⚠️ Se eliminó el companion object ya que ahora se usa la clase Constants.kt
+    // Si aún no has migrado todas las referencias a Constants.EXTRA_USER_ID, usa la clave aquí.
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // ... (código ViewCompat y setContentView)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_main) // Asegúrate de que el ID sea correcto
 
-        // 2. RECIBIR el ID del Intent del Login
-        idUsuario = intent.getIntExtra(EXTRA_USER_ID, 0)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
+        // 1. RECIBIR el ID del Intent del Login
+        // Usando la constante global (asumiendo que la creaste)
+        idUsuario = intent.getIntExtra(Constants.EXTRA_USER_ID, 0)
 
         // Manejo básico de ID nulo
         if (idUsuario <= 0) {
             Toast.makeText(this, "Sesión no válida. ID perdido.", Toast.LENGTH_SHORT).show()
-            // Podrías forzar el cierre y volver al login si el ID es crítico
         }
 
-        // Referencias de UI
+        // 2. 🚀 INICIALIZAR TODAS LAS VISTAS LATEINIT (CRÍTICO)
         btnLogin = findViewById(R.id.btnLogin)
         rcvLista = findViewById(R.id.rcvLista)
+        playerView = findViewById(R.id.playerView) // 🚨 CORRECCIÓN: Inicializar playerView.
+        // Asegúrate de que R.id.player_view sea el ID correcto en tu XML
+
+        // 3. CONFIGURAR VISTAS
         rcvLista.layoutManager = LinearLayoutManager(this)
 
-        // ... (código del video y Presenter)
+        // 4. INICIALIZAR PRESENTER
+        presenter = MainPresenter(this)
+        presenter.obtenerEquipos()
 
+        // 5. CONFIGURAR NAVEGACIÓN
         btnLogin.setOnClickListener {
-            // 3. PASAR el ID a la Activity Usuario
             val intentUsuario = Intent(this, Usuario::class.java).apply {
-                putExtra(EXTRA_USER_ID, idUsuario)
+                // 🚨 USAR LA CONSTANTE GLOBAL
+                putExtra(Constants.EXTRA_USER_ID, idUsuario)
             }
             startActivity(intentUsuario)
         }
@@ -68,7 +80,10 @@ class MainActivity : AppCompatActivity(), MainContrac {
     // Inicializar el reproductor SIN cargar nada
     private fun startPlayer() {
         exoPlayer = ExoPlayer.Builder(this).build()
-        playerView.player = exoPlayer
+        playerView.player = exoPlayer // 🛑 Ahora playerView está inicializada
+
+        // Llamar a obtenerVideo() aquí para que el Presenter cargue el video
+        presenter.caragarVide()
     }
 
     // Detener y liberar memoria
@@ -84,15 +99,14 @@ class MainActivity : AppCompatActivity(), MainContrac {
 
     override fun onStop() {
         super.onStop()
-        exoPlayer?.playWhenReady = false   // Pausa
+        // Mejor práctica para onStop: solo pausar
+        exoPlayer?.playWhenReady = false
         exoPlayer?.pause()
-        // NO lo destruyas
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        exoPlayer?.release()
-        exoPlayer = null
+        stopPlayer() // Llamar a stopPlayer para liberar recursos
     }
 
 

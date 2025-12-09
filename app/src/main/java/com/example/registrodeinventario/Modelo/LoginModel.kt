@@ -31,28 +31,18 @@ class LoginModel {
         apiService.iniciarSesion(
             "login", email, password
         ).enqueue(object : Callback<List<clsDatosRespuesta>> {
-            override fun onResponse(
-                call: Call<List<clsDatosRespuesta>>,
-                response: Response<List<clsDatosRespuesta>>
-            ) {
-                if (response.isSuccessful) {
-                    val listaRespuesta = response.body()
-
-                    if (!listaRespuesta.isNullOrEmpty()) {
-                        callback(listaRespuesta.first(), null)
-                    } else {
-                        callback(null, "Respuesta exitosa, pero cuerpo JSON vacío.")
-                    }
+            override fun onResponse(call: Call<List<clsDatosRespuesta>>, response: Response<List<clsDatosRespuesta>>) {
+                // Si la respuesta del servidor es exitosa, pero el cuerpo es nulo, manejarlo.
+                if (response.isSuccessful && response.body() != null) {
+                    callback.invoke(response.body()!!.first(), null)
                 } else {
-                    callback(null, "Error del servidor: ${response.errorBody()?.string()}")
+                    callback.invoke(null, "Error en el servidor: " + response.code())
                 }
             }
 
-            override fun onFailure(
-                call: Call<List<clsDatosRespuesta>>,
-                t: Throwable
-            ) {
-                callback(null, "Error de conexión: ${t.message}")
+            override fun onFailure(call: Call<List<clsDatosRespuesta>>, t: Throwable) {
+                // Si falla la red (internet, timeout, host no encontrado)
+                callback.invoke(null, "Fallo de red: " + t.message)
             }
         })
     }
